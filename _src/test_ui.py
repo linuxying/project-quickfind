@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """GUI 逻辑自测：过滤、排序、置顶、路径红标、打开动作、差异刷新、关闭行为。
 
-数据全部使用虚构的客户名/编号，路径落在临时目录里，不依赖任何本机真实目录。
+数据写在临时目录里，不依赖已有文件。
 """
 import importlib.util
 import os
@@ -178,7 +178,7 @@ dlg._maybe_fill_impl(True)
 chk("不覆盖已填名称", dlg.v_name.get() == "我已手填的名称", dlg.v_name.get())
 dlg.destroy()
 
-print("\n=== 帮助/关于 不泄露用户名 ===")
+print("\n=== 帮助/关于 的路径显示 ===")
 
 
 def _walk(w):
@@ -207,7 +207,8 @@ pump(0.2)
 t1 = _top("快捷键与用法")
 help_txt = _text_in(t1) if t1 else ""
 chk("帮助窗口打开了", bool(t1))
-chk("帮助里没有 Windows 用户名", bool(user) and user.lower() not in help_txt.lower(),
+chk("帮助里的路径已占位化",
+    bool(user) and user.lower() not in help_txt.lower(),
     [ln for ln in help_txt.splitlines() if user.lower() in ln.lower()][:2])
 chk("帮助用占位符显示数据路径",
     ("%APPDATA%" in help_txt) or ("%LOCALAPPDATA%" in help_txt) or ("%USERPROFILE%" in help_txt),
@@ -221,7 +222,7 @@ pump(0.2)
 t2 = _top("关于")
 about_txt = _text_in(t2) if t2 else ""
 chk("关于窗口打开了", bool(t2))
-chk("关于里没有 Windows 用户名", bool(user) and user.lower() not in about_txt.lower(), about_txt)
+chk("关于里的路径已占位化", bool(user) and user.lower() not in about_txt.lower(), about_txt)
 chk("关于里有版本号", "版本" in about_txt, about_txt)
 if t2:
     t2.destroy()
@@ -229,7 +230,7 @@ pump(0.2)
 
 app.do_backup()
 pump(0.2)
-chk("备份提示里没有用户名",
+chk("备份提示里的路径已占位化",
     bool(user) and user.lower() not in app.lbl_status.cget("text").lower(),
     app.lbl_status.cget("text"))
 

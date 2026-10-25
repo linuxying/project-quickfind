@@ -122,7 +122,7 @@ def path_exists(p):
 def mask_path(p):
     """把家目录前缀换成 %APPDATA% 一类的占位符。
 
-    界面上给用户看的路径一律过这个函数——否则截图/贴日志时会连带泄露 Windows 用户名。
+    界面上给用户看的路径一律过这个函数，统一显示成 %APPDATA% 这类占位符。
     """
     if not p:
         return p
