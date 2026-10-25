@@ -34,7 +34,7 @@ Windows 单文件小工具 · Python + tkinter · 零第三方依赖 · 数据�
 
 ## 下载
 
-**开箱即用**：到 [Releases](../../releases/latest) 下载 `项目速查.exe`，双击运行，不需要装 Python。
+**开箱即用**：到 [Releases](../../releases/latest) 下载 `project-quickfind-1.1.1.exe`，双击运行即可（文件名可自己改成 `项目速查.exe`，不影响功能），不需要装 Python。
 
 **想自己构建**：见[从源码构建](#从源码构建)。
 
