@@ -1,0 +1,9 @@
+# 统一行尾：仓库内一律 LF，避免 Windows 上产生整文件 diff
+* text=auto eol=lf
+
+# 二进制文件：不做行尾转换，也不做文本 diff
+*.exe   binary
+*.png   binary
+*.ico   binary
+*.docx  binary
+*.zip   binary
